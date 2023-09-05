@@ -1,5 +1,8 @@
 <p style="color: green"><%= notice %></p>
 
+<!--button to close sesion-->
+<%= link_to 'Logout', destroy_user_session_path, class:"btn btn-outline-danger", 'data-turbo-method': :delete  %>
+
 <h1>Users</h1>
 
 <div id="users">

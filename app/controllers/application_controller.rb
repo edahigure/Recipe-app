@@ -9,5 +9,4 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:log_in,
                                       keys: %i[email password])
   end
-
 end

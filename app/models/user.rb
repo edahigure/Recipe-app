@@ -13,5 +13,4 @@ class User < ApplicationRecord
   def user?
     role == 'user' || role.nil?
   end
-  
 end

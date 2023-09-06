@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Ability
   include CanCan::Ability
 
@@ -29,12 +27,11 @@ class Ability
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/blob/develop/docs/define_check_abilities.md
     can :read, Recipe
-    
 
     return unless user.present? # additional permissions for logged in users (they can read their own posts)
 
     can %i[read update create destroy], Recipe, user_id: user.id
-    
+
     return unless user.admin? # additional permissions for administrators
 
     can :manage, :all

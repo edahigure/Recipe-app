@@ -14,9 +14,8 @@
  *= require_self
  */
 
-
 body {
-  font-family: 'Pangolin', cursive !important ;
+  font-family: 'Pangolin', cursive !important;
 }
 
 .container-column {
@@ -38,7 +37,7 @@ body {
   border: solid black 1px;
 }
 
-#recipes{
+#recipes {
   display: flex;
   flex-direction: column;
   gap: 12px;

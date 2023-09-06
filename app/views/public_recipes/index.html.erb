@@ -5,6 +5,10 @@
 <div id="recipes">
   <% @recipes.each do |recipe| %>
 
+    <% if recipe.is_public? %>
+
+
+
     <div class="container-solid">
       
       <div class="container-column"> 
@@ -52,7 +56,9 @@
 
       </div>
 
-    </div>  
+    </div>
+    
+    <% end %>
 
   <% end %>
 </div>

@@ -13,3 +13,33 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  font-family: 'Pangolin', cursive !important;
+}
+
+.container-column {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  flex: 1;
+  gap: 12px;
+}
+
+.container-solid {
+  display: flex;
+  flex: 1;
+  gap: 12px;
+  border: solid black 1px;
+}
+
+#recipes {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+}

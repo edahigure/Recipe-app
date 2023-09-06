@@ -3,7 +3,7 @@ class Recipe < ApplicationRecord
   has_many :recipe_foods
   has_many :foods, through: :recipe_foods
 
-  def is_public?
-    public==true
+  def public?
+    public == true
   end
 end

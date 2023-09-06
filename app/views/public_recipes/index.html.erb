@@ -25,6 +25,7 @@
           <p>
             by <%= recipe.user.name %>
           </p>
+          <div><%= link_to 'details', recipe_path(recipe.id) %>  </div>
         </div>  
       </div> 
       <div class = "container-column">

@@ -22,6 +22,7 @@ body {
   list-style: none;
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
 .container {
@@ -32,6 +33,7 @@ body {
 
 .container-solid {
   display: flex;
+  justify-content: space-between 
   flex: 1;
   gap: 12px;
   border: solid black 1px;

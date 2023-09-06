@@ -15,5 +15,8 @@ food4=Food.create(name: 'Manzana',measurement_unit: 'unit',price: 5, quantity: '
 
 recipe1=Recipe.create(name: 'licuado de cambur' , preparation_time: '5 min', cooking_time: 'no coking needed', description: 'Mezcle la leche y el cambur en una licuadora, agrege azucar al gusto y listo', public: true, user: user)
 recipe1=Recipe.create(name: 'licuado de Manzana' , preparation_time: '2 min', cooking_time: 'no cooking needed', description: 'Mezcle la leche y la manzana en una licuadora, agrege azucar al gusto y listo', public: true, user: user)
+recipe1=Recipe.create(name: 'Pure de Manzana' , preparation_time: '1 min', cooking_time: 'no cooking needed', description: 'Ponga a hervir la manzana en agua y luego en una licuadora, agrege azucar al gusto y listo', public: true, user: user)
+
+
 
 recipe_food= RecipeFood.create(quantity: '1', recipe: recipe1, food: foods[1])

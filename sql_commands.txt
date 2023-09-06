@@ -20,3 +20,6 @@ recipe1=Recipe.create(name: 'Pure de Manzana' , preparation_time: '1 min', cooki
 
 
 recipe_food= RecipeFood.create(quantity: '1', recipe: recipe1, food: foods[1])
+
+
+rails generate migration add_role_to_users role:string

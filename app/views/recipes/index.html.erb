@@ -15,11 +15,14 @@
 
 
         <div class="container">
-          <%= button_to(
-            "Delete recipe",
-            recipe_path(recipe.id),
-            method: :delete
-          ) %>
+
+          <% if can? :destroy, recipe %>
+            <%= button_to(
+              "Delete recipe",
+              recipe_path(recipe.id),
+              method: :delete
+            ) %>
+          <%end%>
 
           <p>
             <%= link_to "Show more", recipe %>

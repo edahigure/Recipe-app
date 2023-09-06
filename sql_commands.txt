@@ -5,21 +5,53 @@ rails generate scaffold Food name:string measurement_unit:string price:decimal q
 rails generate scaffold RecipeFood quantity:decimal recipe:references food:references
 
 
-user=User.create(name: 'tom')
+user=User.find(1)
 
-food1=Food.create(name: 'milk',measurement_unit: 'Lt',price: 20.5, quantity: '10', user: user)
-food2=Food.create(name: 'cambur',measurement_unit: 'unit',price: 2.5, quantity: '10', user: user)
-food3=Food.create(name: 'sugar',measurement_unit: 'kg',price: 20, quantity: '10', user: user)
-food4=Food.create(name: 'Manzana',measurement_unit: 'unit',price: 5, quantity: '10', user: user)
+milk=Food.create(name: 'milk',measurement_unit: 'Lt',price: 20.5, quantity: '10', user: user)
+cambur=Food.create(name: 'cambur',measurement_unit: 'unit',price: 2.5, quantity: '10', user: user)
+suggar=Food.create(name: 'suggar',measurement_unit: 'kg',price: 20, quantity: '10', user: user)
+manzana=Food.create(name: 'Manzana',measurement_unit: 'unit',price: 5, quantity: '10', user: user)
+
+licuado_de_cambur=Recipe.create(name: 'licuado de cambur' , preparation_time: '5 min', cooking_time: 'no coking needed', description: 'Mezcle la leche y el cambur en una licuadora, agrege azucar al gusto y listo', public: true, user: user)
+
+RecipeFood.create(quantity: '1', recipe: licuado_de_cambur, food: milk)
+RecipeFood.create(quantity: '1', recipe: licuado_de_cambur, food: cambur)
+RecipeFood.create(quantity: '0.01', recipe: licuado_de_cambur, food: suggar)
+
+licuado_de_Manzana=Recipe.create(name: 'licuado de Manzana' , preparation_time: '2 min', cooking_time: 'no cooking needed', description: 'Mezcle la leche y la manzana en una licuadora, agrege azucar al gusto y listo', public: true, user: user)
+
+RecipeFood.create(quantity: '1', recipe: licuado_de_Manzana, food: milk)
+RecipeFood.create(quantity: '1', recipe: licuado_de_Manzana, food: manzana)
+RecipeFood.create(quantity: '0.01', recipe: licuado_de_Manzana, food: suggar)
+
+pure_de_Manzana=Recipe.create(name: 'Pure de Manzana' , preparation_time: '1 min', cooking_time: 'no cooking needed', description: 'Ponga a hervir la manzana en agua y luego en una licuadora, agrege azucar al gusto y listo', public: true, user: user)
+
+RecipeFood.create(quantity: '1', recipe: pure_de_Manzana, food: manzana)
+RecipeFood.create(quantity: '0.01', recipe: pure_de_Manzana, food: suggar)
 
 
-recipe1=Recipe.create(name: 'licuado de cambur' , preparation_time: '5 min', cooking_time: 'no coking needed', description: 'Mezcle la leche y el cambur en una licuadora, agrege azucar al gusto y listo', public: true, user: user)
-recipe1=Recipe.create(name: 'licuado de Manzana' , preparation_time: '2 min', cooking_time: 'no cooking needed', description: 'Mezcle la leche y la manzana en una licuadora, agrege azucar al gusto y listo', public: true, user: user)
-recipe1=Recipe.create(name: 'Pure de Manzana' , preparation_time: '1 min', cooking_time: 'no cooking needed', description: 'Ponga a hervir la manzana en agua y luego en una licuadora, agrege azucar al gusto y listo', public: true, user: user)
+user=User.find(2)
+
+milk=Food.create(name: 'milk',measurement_unit: 'Lt',price: 20.5, quantity: '10', user: user)
+fresa=Food.create(name: 'cambur',measurement_unit: 'kg',price: 50, quantity: '3', user: user)
+suggar=Food.create(name: 'suggar',measurement_unit: 'kg',price: 20, quantity: '10', user: user)
+huevos=Food.create(name: 'huevos',measurement_unit: 'unit',price: 3, quantity: '50', user: user)
+harina=Food.create(name: 'Harina',measurement_unit: 'kg',price: 50, quantity: '1', user: user)
 
 
 
-recipe_food= RecipeFood.create(quantity: '1', recipe: recipe1, food: foods[1])
+
+pastel_de_fresa=Recipe.create(name: 'Pastel de fresa' , preparation_time: '2 hr', cooking_time: '1 hr', description: 'Mezcle la leche y harina junto con los huevos en una licuadora, agrege azucar al gusto y pongalo en el horno en un recipiente adecuado', public: true, user: user)
+
+
+
+RecipeFood.create(quantity: '0.5', recipe: pastel_de_fresa, food: milk)
+RecipeFood.create(quantity: '0.5', recipe: pastel_de_fresa, food: fresa)
+RecipeFood.create(quantity: '0.07', recipe: pastel_de_fresa, food: suggar)
+RecipeFood.create(quantity: '0.5', recipe: pastel_de_fresa, food: harina)
+
 
 
 rails generate migration add_role_to_users role:string
+
+rails generate controller PublicRecipes

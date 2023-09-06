@@ -1,0 +1,66 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Public Recipes</h1>
+
+<div id="recipes">
+  <% @recipes.each do |recipe| %>
+
+    <% if recipe.public? %>
+
+
+
+    <div class="container-solid">
+      
+      <div class="container-column"> 
+        <p>
+          <strong>Recipe:</strong>
+          <%= recipe.name %>
+        </p>
+        <div class="container">
+
+          <% if can? :destroy, recipe %>
+            <%= button_to(
+              "Delete recipe",
+              recipe_path(recipe.id),
+              method: :delete
+            ) %>
+          <%end%>
+
+          <p>
+            by <%= recipe.user.name %>
+          </p>
+          <div><%= link_to 'details', recipe_path(recipe.id) %>  </div>
+        </div>  
+      </div> 
+      <div class = "container-column">
+        <p>
+        <strong>Total food items:</strong>
+          <%= RecipeFood.where(recipe_id: recipe.id).count %>
+        </p>
+        
+       
+        <% foods_recipe= RecipeFood.where(recipe_id: recipe.id) %>
+        <% sum = 0 %>
+        <% foods_recipe.each do |food|%>
+          <% if @foods[food.food_id] %>
+            <% sum = sum +@foods[food.food_id].price*food.quantity   %>            
+          <% end %>
+        <% end %>
+        
+
+        <p>
+        <strong>Total price:</strong>
+        <%= sum   %>          
+        </p>
+  
+
+      </div>
+
+    </div>
+    
+    <% end %>
+
+  <% end %>
+</div>
+
+<%= link_to "New recipe", new_recipe_path %>

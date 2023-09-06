@@ -55,3 +55,5 @@ RecipeFood.create(quantity: '0.5', recipe: pastel_de_fresa, food: harina)
 rails generate migration add_role_to_users role:string
 
 rails generate controller PublicRecipes
+
+rails db:drop db:create db:migrate

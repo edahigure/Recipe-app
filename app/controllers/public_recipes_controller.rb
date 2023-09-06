@@ -4,7 +4,7 @@ class PublicRecipesController < ApplicationController
 
   # GET /recipes or /recipes.json
   def index
-    @recipes = Recipe.includes(:recipe_foods).all
+    @recipes = Recipe.includes(:recipe_foods).all.order(created_at: :desc)
     @foods = Food.all
   end
 

@@ -1,33 +1,54 @@
-<div id="<%= dom_id recipe %>">
-  
-  <p>
-    <strong>Name:</strong>
-    <%= recipe.name %>
-  </p>
+<div class="d-flex justify-content-center flex-column">
+    <h1 class="text-center"><%= @recipe.name%></h1>
+    <div id="recipe-details" class="flex">
+      <div>
+        <div>
+          <h3>
+            Preparation time: <%=@recipe.preparation_time %>
+          </h3>
+          <h3>
+            Cooking time: <%=@recipe.cooking_time %>%
+          </h3>
+          </h3>
+        </div>
+        <div>
+          <!-- ruby on rails checkbox activate or deactivate public mode -->
+          <label for="public">Public</label><%= check_box_tag "public", "1", false, data: { toggle: "toggle" } %>
+        </div>
+      </div>
+      <div>
+        <p><%= @recipe.description %></p>
+      </div>
+    </div>
 
-  <p>
-    <strong>Preparation time:</strong>
-    <%= recipe.preparation_time %>
-  </p>
+    <div id="form-buttons">
+      <div class="flex justify-content-between">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#generateShoppingListModal">
+          Generate shopping list
+        </button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addIngredientModal">
+          Add Ingredient
+        </button>
+        <!--%= link_to "Add ingredient", new_recipe_recipe_food_path(@recipe) %-->
+      </div>
+      <div class="separator"></div>
+    </div>
+        <!--%= render @ingredients[0] %-->
 
-  <p>
-    <strong>Cooking time:</strong>
-    <%= recipe.cooking_time %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= recipe.description %>
-  </p>
-
-  <p>
-    <strong>Public:</strong>
-    <%= recipe.public %>
-  </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= recipe.user_id %>
-  </p>
-
+    <p>Ingredients: <%= @ingredients.length %></p>
+    <table class="table table-striped" id="ingredients">
+      <thead>
+        <tr>
+          <th scope="col">Food</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Value</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @ingredients.each do |recipe_food| %>
+        <%= render recipe_food %>
+      <% end %>
+      </tbody>
+    </table>
 </div>

@@ -1,10 +1,41 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @recipe %>
+<div class="modal fade" id="addIngredientModal" tabindex="-1" aria-labelledby="addFoodModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addFoodModalLabel">Add ingredient</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h5>Select ingredient</h5>
+
+        <%= form_with model: RecipeFood.new, url: recipe_foods_path, local: true do |form| %>
+          <div class="mb-3">
+            <%= form.collection_select :food_id, current_user.foods, :id, :name, { prompt: "-- Select food --" }, { class: "form-select", id: "food-selector" } %>
+          </div>
+
+          <div class="mb-3">
+            <%= form.label :quantity %>
+            <%= form.number_field :quantity, class: "form-control" %>
+          </div>
+
+          <%= form.hidden_field :recipe_id, value: @recipe.id %>
+          
+          <div class="mb-3">
+            <%= form.submit "Add ingredient", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
 
 <div>
-  <%= link_to "Edit this recipe", edit_recipe_path(@recipe) %> |
+  <!--%= link_to "Edit this recipe", edit_recipe_path(@recipe) %-->
   <%= link_to "Back to recipes", recipes_path %>
 
-  <%= button_to "Destroy this recipe", @recipe, method: :delete %>
+  <!--%= button_to "Destroy this recipe", @recipe, method: :delete %-->
 </div>
+<%= render @recipe %>

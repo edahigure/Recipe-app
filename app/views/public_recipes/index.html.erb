@@ -35,22 +35,13 @@
       <div class = "container-column">
         <p>
         <strong>Total food items:</strong>
-          <%= RecipeFood.where(recipe_id: recipe.id).count %>
+          <%= recipe.recipe_foods.count %>
+          <!--%= RecipeFood.where(recipe_id: recipe.id).count %-->
         </p>
-        
-       
-        <% foods_recipe= RecipeFood.where(recipe_id: recipe.id) %>
-        <% sum = 0 %>
-        <% foods_recipe.each do |food|%>
-          <% if @foods[food.food_id] %>
-            <% sum = sum +@foods[food.food_id].price*food.quantity   %>            
-          <% end %>
-        <% end %>
-        
 
         <p>
         <strong>Total price:</strong>
-        <%= sum   %>          
+        <%= recipe.total_price  %>          
         </p>
   
 

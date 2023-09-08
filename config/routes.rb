@@ -1,5 +1,5 @@
-Rails.application.routes.draw do
-  devise_for :users
+Rails.application.routes.draw do   devise_for :users
+  resources :shopping_list, only: %i[index]
   resources :foods
   resources :recipe_foods, only: %i[create destroy]
   resources :recipes

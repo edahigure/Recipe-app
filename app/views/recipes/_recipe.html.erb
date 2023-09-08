@@ -7,7 +7,7 @@
             Preparation time: <%=@recipe.preparation_time %>
           </h3>
           <h3>
-            Cooking time: <%=@recipe.cooking_time %>%
+            Cooking time: <%=@recipe.cooking_time %>
           </h3>
           </h3>
         </div>
@@ -22,20 +22,16 @@
     </div>
 
     <div id="form-buttons">
-      <div class="flex justify-content-between">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#generateShoppingListModal">
-          Generate shopping list
-        </button>
+      <div class="d-flex gap-2">
+        <%= link_to "Generate shopping list", shopping_list_index_path, class: "btn btn-primary" %>
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addIngredientModal">
           Add Ingredient
         </button>
-        <!--%= link_to "Add ingredient", new_recipe_recipe_food_path(@recipe) %-->
       </div>
       <div class="separator"></div>
     </div>
         <!--%= render @ingredients[0] %-->
-
-    <p>Ingredients: <%= @ingredients.length %></p>
+        
     <table class="table table-striped" id="ingredients">
       <thead>
         <tr>

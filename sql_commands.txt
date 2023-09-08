@@ -7,27 +7,27 @@ rails generate scaffold RecipeFood quantity:decimal recipe:references food:refer
 
 user=User.find(1)
 
-milk=Food.create(name: 'milk',measurement_unit: 'Lt',price: 20.5, quantity: '10', user_id: user.id)
-cambur=Food.create(name: 'cambur',measurement_unit: 'unit',price: 2.5, quantity: '10', user_id: user.id)
-suggar=Food.create(name: 'suggar',measurement_unit: 'kg',price: 20, quantity: '10', user_id: user.id)
-manzana=Food.create(name: 'Manzana',measurement_unit: 'unit',price: 5, quantity: '10', user_id: user.id)
+milk=Food.create(name: 'milk',measurement_unit: 'Lt',price: 20.5, quantity: '1', user_id: user.id)
+cambur=Food.create(name: 'cambur',measurement_unit: 'unit',price: 2.5, quantity: '1', user_id: user.id)
+suggar=Food.create(name: 'suggar',measurement_unit: 'kg',price: 20, quantity: '1', user_id: user.id)
+manzana=Food.create(name: 'manzana',measurement_unit: 'unit',price: 5, quantity: '1', user_id: user.id)
 
 licuado_de_cambur=Recipe.create(name: 'licuado de cambur' , preparation_time: '5 min', cooking_time: 'no coking needed', description: 'Mezcle la leche y el cambur en una licuadora, agrege azucar al gusto y listo', public: true, user_id: user.id)
 
-RecipeFood.create(quantity: 1, recipe: licuado_de_cambur, food_id: milk.id)
-RecipeFood.create(quantity: 1, recipe: licuado_de_cambur, food_id: cambur.id)
+RecipeFood.create(quantity: 2, recipe: licuado_de_cambur, food_id: milk.id)
+RecipeFood.create(quantity: 2, recipe: licuado_de_cambur, food_id: cambur.id)
 RecipeFood.create(quantity: 0.01, recipe: licuado_de_cambur, food_id: suggar.id)
 
-licuado_de_Manzana=Recipe.create(name: 'licuado de Manzana' , preparation_time: '2 min', cooking_time: 'no cooking needed', description: 'Mezcle la leche y la manzana en una licuadora, agrege azucar al gusto y listo', public: true, user_id: user.id)
+licuado_de_manzana=Recipe.create(name: 'licuado de Manzana' , preparation_time: '2 min', cooking_time: 'no cooking needed', description: 'Mezcle la leche y la manzana en una licuadora, agrege azucar al gusto y listo', public: true, user_id: user.id)
 
-RecipeFood.create(quantity: 1, recipe: licuado_de_Manzana, food_id: milk.id)
-RecipeFood.create(quantity: 1, recipe: licuado_de_Manzana, food_id: manzana.id)
-RecipeFood.create(quantity: 0.01, recipe: licuado_de_Manzana, food_id: suggar.id)
+RecipeFood.create(quantity: 2, recipe: licuado_de_manzana, food_id: milk.id)
+RecipeFood.create(quantity: 2, recipe: licuado_de_manzana, food_id: manzana.id)
+RecipeFood.create(quantity: 0.01, recipe: licuado_de_manzana, food_id: suggar.id)
 
-pure_de_Manzana=Recipe.create(name: 'Pure de Manzana' , preparation_time: '1 min', cooking_time: 'no cooking needed', description: 'Ponga a hervir la manzana en agua y luego en una licuadora, agrege azucar al gusto y listo', public: true, user_id: user.id)
+pure_de_manzana=Recipe.create(name: 'Pure de Manzana' , preparation_time: '1 min', cooking_time: 'no cooking needed', description: 'Ponga a hervir la manzana en agua y luego en una licuadora, agrege azucar al gusto y listo', public: true, user_id: user.id)
 
-RecipeFood.create(quantity: 1, recipe: pure_de_Manzana, food_id: manzana.id)
-RecipeFood.create(quantity: 0.01, recipe: pure_de_Manzana, food_id: suggar.id)
+RecipeFood.create(quantity: 10, recipe: pure_de_manzana, food_id: manzana.id)
+RecipeFood.create(quantity: 0.5, recipe: pure_de_manzana, food_id: suggar.id)
 
 
 user=User.find(2)
@@ -38,12 +38,7 @@ suggar=Food.create(name: 'suggar',measurement_unit: 'kg',price: 20, quantity: '1
 huevos=Food.create(name: 'huevos',measurement_unit: 'unit',price: 3, quantity: '50', user_id: user.id)
 harina=Food.create(name: 'Harina',measurement_unit: 'kg',price: 50, quantity: '1', user_id: user.id)
 
-
-
-
 pastel_de_fresa=Recipe.create(name: 'Pastel de fresa' , preparation_time: '2 hr', cooking_time: '1 hr', description: 'Mezcle la leche y harina junto con los huevos en una licuadora, agrege azucar al gusto y pongalo en el horno en un recipiente adecuado', public: true, user_id: user.id)
-
-
 
 RecipeFood.create(quantity: '0.5', recipe: pastel_de_fresa, food_id: milk.id)
 RecipeFood.create(quantity: '0.5', recipe: pastel_de_fresa, food_id: fresa.id)

@@ -1,0 +1,4 @@
+<input id="public" name="public" type="checkbox" data-toggle="switchbutton" checked  onchange ="this.form.requestSubmit();" >
+
+<%= form.check_box :public, onchange: "this.form.requestSubmit();" %>
+  

@@ -3,8 +3,8 @@ class PublicRecipesController < ApplicationController
 
   # GET /recipes or /recipes.json
   def index
-    @recipes = Recipe.includes(:recipe_foods).all.order(created_at: :desc)
-    @foods = Food.all
+    @public_recipes = Recipe.where(public: true).order(created_at: :desc)
+
   end
 
   # GET /recipes/1 or /recipes/1.json

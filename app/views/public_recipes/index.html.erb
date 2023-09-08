@@ -3,11 +3,9 @@
 <h1>Public Recipes</h1>
 
 <div id="recipes">
-  <% @recipes.each do |recipe| %>
+  <% @public_recipes.each do |recipe| %>
 
     <% if recipe.public? %>
-
-
 
     <div class="container-solid">
       
@@ -37,22 +35,9 @@
         <strong>Total food items:</strong>
           <%= RecipeFood.where(recipe_id: recipe.id).count %>
         </p>
-        
-       
-        <% foods_recipe= RecipeFood.where(recipe_id: recipe.id) %>
-        <% sum = 0 %>
-        <% foods_recipe.each do |food|%>
-          <% if @foods[food.food_id] %>
-            <% sum = sum +@foods[food.food_id].price*food.quantity   %>            
-          <% end %>
-        <% end %>
-        
-
-        <p>
-        <strong>Total price:</strong>
-        <%= sum   %>          
-        </p>
-  
+               
+        <% foods_recipe= RecipeFood.where(recipe_id: recipe.id) %>      
+        <p>Total price: $ <%= recipe.total_price %></p>
 
       </div>
 

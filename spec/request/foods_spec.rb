@@ -1,7 +1,7 @@
-#rspec spec/request/public_recipes_spec.rb
+#rspec spec/request/foods_spec.rb
 require 'rails_helper'
 
-RSpec.describe 'Public Recipies', type: :feature do
+RSpec.describe 'Foods page', type: :system do
 
   let!(:user) do
     User.create(name: 'Jose', email: 'edahigure@hotmail.com',role: 'user',password: 'qweqwe')
@@ -30,42 +30,30 @@ RSpec.describe 'Public Recipies', type: :feature do
 
 
   before :each do
-    RecipeFood.create(quantity: 1, recipe: licuado_de_cambur, food_id: milk.id)
-    RecipeFood.create(quantity: 1, recipe: licuado_de_cambur, food_id: cambur.id)
-    RecipeFood.create(quantity: 0.01, recipe: licuado_de_cambur, food_id: suggar.id)
 
-    visit public_recipes_path
-  
-    fill_in('user_email', :with => 'edahigure@hotmail.com')
-    fill_in('user_password', :with => 'qweqwe')
-    click_button('Log in')
-
+    
   end
   
   describe 'index page' do
     it 'shows the right content' do
 
+      RecipeFood.create(quantity: 1, recipe: licuado_de_cambur, food_id: milk.id)
+      RecipeFood.create(quantity: 1, recipe: licuado_de_cambur, food_id: cambur.id)
+      RecipeFood.create(quantity: 0.01, recipe: licuado_de_cambur, food_id: suggar.id)
 
-      expect(page).to have_content('Public Recipes')
-      expect(page).to have_content('Recipe: licuado de cambur')
-      expect(page).to have_content('by Jose')      
-    end
-
-    it 'Should get the right number of foods' do
-
-
-    
-      expect(page).to have_content('Total food items: 3')
-    
-      
-    end
+      visit foods_path
   
-    it 'Should get the right total cost' do
-
-      expect(page).to have_content('Total price: $ 23.2')
+      fill_in('user_email', :with => 'edahigure@hotmail.com')
+      fill_in('user_password', :with => 'qweqwe')
+      click_button('Log in')
+  
+      expect(page).to have_content('Foods')
+      expect(page).to have_content('milk')
+      expect(page).to have_content('cambur')
+      expect(page).to have_content('suggar')
+      expect(page).to have_content('Manzana')
     
     end
-
     
 
   end

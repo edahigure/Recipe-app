@@ -2,9 +2,30 @@
 
 <%= render @recipe %>
 
+
+<%= form_with model: @recipe do |form| %>
+
+  <% if @recipe.public == true %>
+  <%= form.check_box :public, {onchange: "this.form.requestSubmit();"}%>
+  <% else %>
+  <%= form.check_box :public, {onchange: "this.form.requestSubmit();"}%>
+  <% end %>
+
+<% end %>
+
+
 <div>
   <%= link_to "Edit this recipe", edit_recipe_path(@recipe) %> |
   <%= link_to "Back to recipes", recipes_path %>
 
+
+  <%= link_to "Shopping list", shopping_list_index_path %>
+
+  
+  <%= form_with(url: shopping_list_index_path, method: :get, local: false) do |form| %>
+    <%= form.hidden_field :recipe_id, value: @recipe.id %>
+    <%= form.submit "Generate shopping list", class: "btn btn-primary" %>
+  <% end %>
+  
   <%= button_to "Destroy this recipe", @recipe, method: :delete %>
 </div>

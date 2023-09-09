@@ -29,11 +29,11 @@ RSpec.describe 'Recipie detal', type: :system do
   let!(:licuado_de_cambur) do
     Recipe.create(name: 'licuado de cambur', preparation_time: '5 min', cooking_time: 'no cooking needed',
                   description: 'Mezcle la leche y el cambur en una licuadora, agrege azucar ' \
-                  'al gusto y listo', public: true, user_id: user.id)
+                               'al gusto y listo', public: true, user_id: user.id)
   end
-    let!(:recipe_milk) {RecipeFood.create(quantity: 1, recipe: licuado_de_cambur, food_id: milk.id)}
-    let!(:recipe_cambur) {RecipeFood.create(quantity: 1, recipe: licuado_de_cambur, food_id: cambur.id)}
-    let!(:recipe_sugar) {RecipeFood.create(quantity: 0.01, recipe: licuado_de_cambur, food_id: sugar.id)}
+  let!(:recipe_milk) { RecipeFood.create(quantity: 1, recipe: licuado_de_cambur, food_id: milk.id) }
+  let!(:recipe_cambur) { RecipeFood.create(quantity: 1, recipe: licuado_de_cambur, food_id: cambur.id) }
+  let!(:recipe_sugar) { RecipeFood.create(quantity: 0.01, recipe: licuado_de_cambur, food_id: sugar.id) }
 
   before :each do
     user.confirm

@@ -17,8 +17,8 @@ RSpec.describe 'Foods page', type: :system do
 
   describe 'index page' do
     it 'shows the right content' do
-    visit foods_path
-    expect(page).to have_content('Foods')
+      visit foods_path
+      expect(page).to have_content('Foods')
       expect(page).to have_content('milk')
     end
 

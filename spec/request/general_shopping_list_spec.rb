@@ -25,7 +25,7 @@ RSpec.describe 'Public Recipies', type: :feature do
   let(:licuado_de_cambur) do
     Recipe.create(name: 'licuado de cambur', preparation_time: '5 min', cooking_time: 'no coking needed',
                   description: 'Mezcle la leche y el cambur en una licuadora, agrege azucar al gusto y ' \
-                  'listo', public: true, user_id: user.id)
+                               'listo', public: true, user_id: user.id)
   end
 
   before :each do

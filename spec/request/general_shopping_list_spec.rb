@@ -31,7 +31,7 @@ RSpec.describe 'Public Recipies', type: :feature do
   before :each do
     RecipeFood.create(quantity: 2, recipe: licuado_de_cambur, food_id: milk.id)
     RecipeFood.create(quantity: 2, recipe: licuado_de_cambur, food_id: cambur.id)
-    RecipeFood.create(quantity: 0.01, recipe: licuado_de_cambur, food_id: suggar.id)
+    RecipeFood.create(quantity: 0.01, recipe: licuado_de_cambur, food_id: sugar.id)
     user.confirm
     sign_in user
     visit shopping_list_index_path
@@ -39,7 +39,7 @@ RSpec.describe 'Public Recipies', type: :feature do
 
   describe 'index page' do
     it 'shows the right content' do
-      expect(page).to have_content('General shopping list')
+      expect(page).to have_content('General Shopping List')
       expect(page).to have_content('milk')
       expect(page).to have_content('cambur')
       expect(page).not_to have_content('sugar')

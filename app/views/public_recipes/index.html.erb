@@ -16,18 +16,10 @@
         </p>
         <div class="container">
 
-          <% if can? :destroy, recipe %>
-            <%= button_to(
-              "Delete recipe",
-              recipe_path(recipe.id),
-              method: :delete
-            ) %>
-          <%end%>
-
           <p>
             by <%= recipe.user.name %>
           </p>
-          <div><%= link_to 'details', recipe_path(recipe.id) %>  </div>
+          <div><%= link_to 'Details', recipe_path(recipe.id) %>  </div>
         </div>  
       </div> 
       <div class = "container-column">
@@ -46,5 +38,3 @@
 
   <% end %>
 </div>
-
-<%= link_to "New recipe", new_recipe_path %>

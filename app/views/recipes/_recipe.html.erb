@@ -13,7 +13,15 @@
         </div>
         <div>
           <!-- ruby on rails checkbox activate or deactivate public mode -->
-          <label for="public">Public</label><%= check_box_tag "public", "1", false, data: { toggle: "toggle" } %>
+          <%= form_with model: @recipe do |form| %>
+
+            <% if @recipe.public == true %>
+            <%= form.check_box :public, {onchange: "this.form.requestSubmit();"}%>
+            <% else %>
+            <%= form.check_box :public, {onchange: "this.form.requestSubmit();"}%>
+            <% end %>
+
+          <% end %>
         </div>
       </div>
       <div>
@@ -48,3 +56,4 @@
       </tbody>
     </table>
 </div>
+

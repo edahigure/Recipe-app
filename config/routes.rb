@@ -5,6 +5,7 @@ Rails.application.routes.draw do   devise_for :users
   resources :recipes
   resources :users
   resources :public_recipes
+  resources :shopping_list
 
   #root to users#index acceced as public_recipes
   

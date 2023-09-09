@@ -68,7 +68,8 @@ RSpec.describe 'Recipie detal', type: :feature do
   scenario 'when clicking on add an ingredient' do
     click_link 'Add ingredient'
     find('#food-selector').select('vainilla')
-    expect(page).to 
+    click_button 'Add ingredient'
+    expect(page).to have_content("vainilla")
   end
 
 end

@@ -1,38 +1,32 @@
 <p style="color: green"><%= notice %></p>
 <%= link_to "New recipe", new_recipe_path %>
 
-<h1>Recipes</h1>
+<h1 class="text-center">Recipes</h1>
 
 <div id="recipes">
   <% @recipes.each do |recipe| %>
 
-    <div class="container-solid">
+    <div class="card p-3">
       
-      <div class="container-column"> 
-        <p>
-          
-          <h3 >
-          <%= link_to recipe.name, recipe_path(recipe.id) , class:"no-text-decoration" %>
-          </h3>
-          
-        </p>
+      <div class="d-flex justify-content-between"> 
         <div class="container">
-
+          <p>
+            <h3 >
+              <%= link_to recipe.name, recipe_path(recipe.id) , class:"no-text-decoration" %>
+            </h3>
+          </p>
           <% if can? :destroy, recipe %>
-                      
-          <%= link_to "Remove", recipe, 'data-turbo-method': :delete %>
-
+            <%= link_to "Remove", recipe, 'data-turbo-method': :delete %>
           <%end%>
-
         </div>  
 
+        <div class="col-6">
+          <p>
+            <%= recipe.description %>
+          </p>
+        </div>
 
       </div> 
-      <p>
-        <strong>Description for the recipe:</strong>
-        <%= recipe.description %>
-      </p>
-
     </div>  
 
   <% end %>

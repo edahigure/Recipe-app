@@ -41,18 +41,18 @@ RSpec.describe 'Recipes Index', type: :feature do
   describe 'index page' do
     it 'shows the right content' do
       expect(page).to have_content('Recipes')
-      expect(page).to have_content('Recipe: licuado de cambur')
+      expect(page).to have_content('licuado de cambur')
       expect(page).to have_content('Mezcle la leche y el cambur en una licuadora, agrege azucar al gusto y listo')
     end
   end
 
   scenario 'when clicking show more' do
-    click_link 'Show more'
+    click_link 'licuado de cambur'
     expect(page).to have_current_path(recipe_path(licuado_de_cambur))
   end
 
   scenario 'when clicking delete recipe' do
-    click_button 'Delete recipe'
+    click_link 'Remove'
     expect(page).not_to have_content('Recipe: licuado de cambur')
   end
 end

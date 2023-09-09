@@ -11,7 +11,6 @@ RSpec.describe 'RecipeFoods', type: :request do
   end
 
   describe 'POST /create' do
-
     before do
       current_user.confirm
       sign_in current_user
@@ -21,8 +20,8 @@ RSpec.describe 'RecipeFoods', type: :request do
       post recipe_foods_path, params: { recipe_food: { quantity: 1, recipe_id: recipe.id, food_id: food.id } }
       expect(response).to have_http_status(:found)
     end
-  end 
-  
+  end
+
   # test delete
   describe 'DELETE /destroy' do
     let(:recipe_food) do
@@ -39,5 +38,4 @@ RSpec.describe 'RecipeFoods', type: :request do
       expect(response).to have_http_status(:found)
     end
   end
-  
 end

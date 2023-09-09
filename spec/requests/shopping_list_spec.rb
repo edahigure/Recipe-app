@@ -1,11 +1,10 @@
-#rspec ./spec/requests/shopping_list_spec.rb
+# rspec ./spec/requests/shopping_list_spec.rb
 require 'rails_helper'
 
 RSpec.describe 'Shopping list', type: :request do
   let!(:current_user) { User.create(name: 'Akai', email: 'akai123@gmail.com', password: '123456') }
-  
-  describe 'GET /index' do
 
+  describe 'GET /index' do
     before do
       current_user.confirm
       sign_in current_user
@@ -17,4 +16,3 @@ RSpec.describe 'Shopping list', type: :request do
     end
   end
 end
-

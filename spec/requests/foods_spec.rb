@@ -2,9 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'Foods', type: :request do
   let!(:current_user) { User.create(name: 'Akai', email: 'akai123@gmail.com', password: '123456') }
-  
-  describe 'GET /index' do
 
+  describe 'GET /index' do
     before do
       current_user.confirm
       sign_in current_user
@@ -17,7 +16,6 @@ RSpec.describe 'Foods', type: :request do
   end
 
   describe 'GET /new' do
-  
     before do
       current_user.confirm
       sign_in current_user
@@ -30,18 +28,19 @@ RSpec.describe 'Foods', type: :request do
   end
 
   describe 'POST /create' do
-
     before do
       current_user.confirm
       sign_in current_user
     end
 
     it 'returns http success' do
-      post foods_path, params: { food: { name: 'Apple', measurement_unit: 'kg', price: '20', quantity: '10', user_id: current_user.id } }
+      post foods_path,
+           params: { food: { name: 'Apple', measurement_unit: 'kg', price: '20', quantity: '10',
+                             user_id: current_user.id } }
       expect(response).to have_http_status(:found)
     end
-  end 
-  
+  end
+
   # test delete
   describe 'DELETE /destroy' do
     let(:food) do
@@ -58,5 +57,4 @@ RSpec.describe 'Foods', type: :request do
       expect(response).to have_http_status(:found)
     end
   end
-  
 end

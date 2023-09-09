@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Foods', type: :request do
+RSpec.describe 'RecipeFoods', type: :request do
   let!(:current_user) { User.create(name: 'Akai', email: 'akai123@gmail.com', password: '123456') }
   let!(:food) do
     Food.create(name: 'Apple', measurement_unit: 'kg', price: '20', quantity: '10', user_id: current_user.id)

@@ -39,6 +39,16 @@ body {
   border: solid black 1px;
 }
 
+.separator {
+  border: solid black 1px;
+  margin-top: 1vh;
+  margin-bottom: 5vh;
+}
+
+.description {
+  min-height: 10vh;
+}
+
 #recipes {
   display: flex;
   flex-direction: column;

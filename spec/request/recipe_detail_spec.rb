@@ -28,8 +28,8 @@ RSpec.describe 'Recipie detal', type: :feature do
 
   let!(:licuado_de_cambur) do
     Recipe.create(name: 'licuado de cambur', preparation_time: '5 min', cooking_time: 'no cooking needed',
-                  description: 'Mezcle la leche y el cambur en una licuadora, agrege azucar
-                   al gusto y listo', public: true, user_id: user.id)
+                  description: 'Mezcle la leche y el cambur en una licuadora, agrege azucar ' \
+                  'al gusto y listo', public: true, user_id: user.id)
   end
 
   before :each do
@@ -53,7 +53,7 @@ RSpec.describe 'Recipie detal', type: :feature do
   end
 
   scenario 'when clicking generate shopping list' do
-    click_link 'Generate shoppig list'
+    click_link 'Generate shopping list'
     expect(page).to have_current_path(shopping_list_index_path)
   end
 
@@ -63,7 +63,7 @@ RSpec.describe 'Recipie detal', type: :feature do
   end
 
   scenario 'when clicking on add an ingredient' do
-    click_link 'Add ingredient'
+    click_link 'Add Ingredient'
     find('#food-selector').select('vainilla')
     click_button 'Add ingredient'
     expect(page).to have_content('vainilla')

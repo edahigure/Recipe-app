@@ -24,14 +24,14 @@ RSpec.describe 'Public Recipies', type: :feature do
 
   let(:licuado_de_cambur) do
     Recipe.create(name: 'licuado de cambur', preparation_time: '5 min', cooking_time: 'no coking needed',
-                  description: 'Mezcle la leche y el cambur en una licuadora, agrege azucar al gusto y
-                   listo', public: true, user_id: user.id)
+                  description: 'Mezcle la leche y el cambur en una licuadora, agrege azucar al gusto y ' \
+                               'listo', public: true, user_id: user.id)
   end
 
   before :each do
     RecipeFood.create(quantity: 2, recipe: licuado_de_cambur, food_id: milk.id)
     RecipeFood.create(quantity: 2, recipe: licuado_de_cambur, food_id: cambur.id)
-    RecipeFood.create(quantity: 0.01, recipe: licuado_de_cambur, food_id: suggar.id)
+    RecipeFood.create(quantity: 0.01, recipe: licuado_de_cambur, food_id: sugar.id)
     user.confirm
     sign_in user
     visit shopping_list_index_path
@@ -39,7 +39,7 @@ RSpec.describe 'Public Recipies', type: :feature do
 
   describe 'index page' do
     it 'shows the right content' do
-      expect(page).to have_content('General shopping list')
+      expect(page).to have_content('General Shopping List')
       expect(page).to have_content('milk')
       expect(page).to have_content('cambur')
       expect(page).not_to have_content('sugar')

@@ -13,15 +13,16 @@
         </div>
         <div>
           <!-- ruby on rails checkbox activate or deactivate public mode -->
+
+      
+
           <%= form_with model: @recipe do |form| %>
-
-            <% if @recipe.public == true %>
-            <%= form.check_box :public, {onchange: "this.form.requestSubmit();"}%>
-            <% else %>
-            <%= form.check_box :public, {onchange: "this.form.requestSubmit();"}%>
-            <% end %>
-
+            <div class="form-check form-switch">
+              <label class="form-check-label">Public</label>
+              <%= form.check_box :public, {onchange: "this.form.requestSubmit();", class: "form-check-input", role: "switch"}%>
+            </div>
           <% end %>
+
         </div>
       </div>
       <div>

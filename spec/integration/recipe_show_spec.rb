@@ -1,4 +1,4 @@
-# rspec spec/request/recipe_detail_spec.rb
+# rspec spec/request/recipe_show_spec.rb
 require 'rails_helper'
 
 RSpec.describe 'Recipie detal', type: :system do

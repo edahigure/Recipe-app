@@ -45,3 +45,7 @@ body {
   gap: 12px;
   padding: 12px;
 }
+
+.no-text-decoration {
+  text-decoration: none;
+}

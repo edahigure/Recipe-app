@@ -1,4 +1,4 @@
-# rspec spec/request/recipes_spec.rb
+# rspec spec/request/recipe_index_spec.rb
 require 'rails_helper'
 
 RSpec.describe 'Recipes Index', type: :feature do

@@ -1,4 +1,4 @@
-# rspec spec/request/public_recipes_spec.rb
+# rspec spec/request/public_recipes_index_spec.rb
 require 'rails_helper'
 
 RSpec.describe 'Public Recipies', type: :system do

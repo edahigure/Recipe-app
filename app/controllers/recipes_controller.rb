@@ -8,8 +8,8 @@ class RecipesController < ApplicationController
 
   # GET /recipes/1 or /recipes/1.json
   def show
-
-   end
+    @ingredients = RecipeFood.includes(:food).where(recipe_id: @recipe.id)
+  end
 
   # GET /recipes/new
   def new

@@ -16,5 +16,4 @@ class Recipe < ApplicationRecord
   def total_price
     recipe_foods.sum { |recipe_food| recipe_food.quantity * recipe_food.food.price }
   end
-
 end

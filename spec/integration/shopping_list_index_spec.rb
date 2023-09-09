@@ -1,4 +1,4 @@
-# rspec spec/request/general_shopping_list_spec.rb
+# rspec spec/request/shopping_list_index_spec.rb
 require 'rails_helper'
 
 RSpec.describe 'Public Recipies', type: :feature do

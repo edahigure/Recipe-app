@@ -1,4 +1,4 @@
-# rspec spec/request/foods_spec.rb
+# rspec spec/request/foods_index_spec.rb
 require 'rails_helper'
 
 RSpec.describe 'Foods page', type: :system do

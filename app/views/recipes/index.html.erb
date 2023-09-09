@@ -10,22 +10,20 @@
       
       <div class="container-column"> 
         <p>
-          <strong>Recipe:</strong>
-          <%= recipe.name %>
+          
+          <h3 >
+          <%= link_to recipe.name, recipe_path(recipe.id) , class:"no-text-decoration" %>
+          </h3>
+          
         </p>
         <div class="container">
 
           <% if can? :destroy, recipe %>
-            <%= button_to(
-              "Delete recipe",
-              recipe_path(recipe.id),
-              method: :delete
-            ) %>
+                      
+          <%= link_to "Remove", recipe, 'data-turbo-method': :delete %>
+
           <%end%>
 
-          <p>
-            <%= link_to "Show more", recipe %>
-          </p>
         </div>  
 
 

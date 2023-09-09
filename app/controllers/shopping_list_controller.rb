@@ -1,38 +1,11 @@
 class ShoppingListController < ApplicationController
-
   def index
-    @recipes = Recipe.where(user_id: current_user.id)
-    @foods = Food.where(user_id: current_user.id)
-    @recipe_foods = RecipeFood.all
+    @foods = current_user.foods.includes(:recipe_foods)
+    @foods_to_buy = @foods.select { |food| !food.to_buy.nil? && food.to_buy.positive? }
+    @total_value = @foods_to_buy.sum { |food| food.to_buy * food.price }
+  end
 
-    @hash_foods={}
-
-    @food_to_buy = []
-    
-    
-    @foods.each do |food|
-      @hash_foods[food.name]= [ food.quantity,food.measurement_unit,food.price,0.0]
-    end
-
-    @recipes.each do |recipe|
-
-      recipe_foods = RecipeFood.where(recipe_id: recipe.id)
-      recipe_foods.each do |recipe_food|
-        food =@foods.find(recipe_food.food_id)
-        @hash_foods[food.name][3] = @hash_foods[food.name][3] + recipe_food.quantity 
-      end    
-
-    end
-   
-    @hash_foods.each do |ele|
-      
-        if( ele[1][3] > ele[1][0] )
-            @food_to_buy.push( [ele[0],ele[1][3]-ele[1][0],ele[1][1],ele[1][2] ])
-        end
-    
-    end 
-    
-
-  end 
-
+  def shopping_list_params
+    params.require(:shopping_list).permit(:recipe_id)
+  end
 end

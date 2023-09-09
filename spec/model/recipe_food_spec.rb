@@ -4,10 +4,10 @@ require 'rails_helper'
 RSpec.describe Food, type: :model do
 
   let!(:user) do
-    User.create(name: 'Jose', email: 'edahigure@hotmail.com',role: 'user')
+    User.create(name: 'Jose', email: 'edahigure@hotmail.com',role: 'user',password: 'qweqwe')
   end
 
-  let(:recipe) do
+  let!(:recipe) do
     Recipe.create(
       name: 'Pastel de fresa',
       preparation_time: '0.5',
@@ -23,22 +23,21 @@ RSpec.describe Food, type: :model do
   end
 
   let!(:recipe_food) do
-    RecipeFood.create(quantity: 0.5, recipe_id: recipe, food_id: food.id)
+    RecipeFood.create(quantity: 0.5, recipe_id: recipe.id, food_id: food.id)
   end
 
   describe 'Check data values' do
 
-    it 'Should have a name' do
-      expect(recipe_food.quantity).to eq(0.5)
+    it 'Should be valid' do
+      expect(recipe_food).to be_valid
     end
 
-    it 'Should have recipe_id' do
-      expect(recipe_food.recipe_id).to eq(recipe.id)
+    it 'Should not be valid when quantity is negative' do
+      recipe_food.quantity = -5.0
+      recipe_food.save
+      expect(recipe_food).not_to  be_valid
     end
 
-    it 'Should have food_id' do
-      expect(recipe_food.food_id).to eq(food.id)
-    end
 
   end
 end

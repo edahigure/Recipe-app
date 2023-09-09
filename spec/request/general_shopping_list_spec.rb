@@ -15,12 +15,12 @@ RSpec.describe 'Public Recipies', type: :feature do
      Food.create(name: 'cambur',measurement_unit: 'unit',price: 2.5, quantity: '1', user_id: user.id)
   end
 
-  let(:suggar) do
-    Food.create(name: 'suggar',measurement_unit: 'kg',price: 20, quantity: '1', user_id: user.id)
+  let(:sugar) do
+    Food.create(name: 'sugar',measurement_unit: 'kg',price: 20, quantity: '1', user_id: user.id)
   end
 
   let(:manzana) do
-     Food.create(name: 'Manzana',measurement_unit: 'unit',price: 5, quantity: '1', user_id: user.id)
+     Food.create(name: 'manzana',measurement_unit: 'unit',price: 5, quantity: '1', user_id: user.id)
   end
 
   let(:licuado_de_cambur) do    
@@ -33,13 +33,9 @@ RSpec.describe 'Public Recipies', type: :feature do
     RecipeFood.create(quantity: 2, recipe: licuado_de_cambur, food_id: milk.id)
     RecipeFood.create(quantity: 2, recipe: licuado_de_cambur, food_id: cambur.id)
     RecipeFood.create(quantity: 0.01, recipe: licuado_de_cambur, food_id: suggar.id)
-
+    user.confirm
+    sign_in user
     visit shopping_list_index_path 
-  
-    fill_in('user_email', :with => 'edahigure@hotmail.com')
-    fill_in('user_password', :with => 'qweqwe')
-    click_button('Log in')
-
   end
   
   describe 'index page' do
@@ -48,13 +44,12 @@ RSpec.describe 'Public Recipies', type: :feature do
       expect(page).to have_content('General shopping list')
       expect(page).to have_content('milk')
       expect(page).to have_content('cambur')
+      expect(page).not_to have_content('sugar')
+      expect(page).not_to have_content('manzana')
+      expect(page).to have_content('Amount of food items to buy: 2')
+      expect(page).to have_content('Total value of food needed: $23')
     
-      
     end
-
-    
-
-    
 
   end
 end

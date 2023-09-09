@@ -3,8 +3,11 @@ require 'rails_helper'
 
 RSpec.describe Recipe, type: :model do
 
-  let(:user) { User.new(name: 'roody', email: 'roody@mail.com') }
-  let(:recipe) do
+  let!(:user) do
+    User.create(name: 'Jose', email: 'edahigure@hotmail.com',role: 'user',password: 'qweqwe')
+  end
+
+  let!(:recipe) do
     Recipe.create(
       name: 'Black Rice',
       preparation_time: '0.5',
@@ -16,6 +19,16 @@ RSpec.describe Recipe, type: :model do
   end
 
   describe 'attributes' do
+    it 'should create a valid Recipe' do
+      expect(recipe).to be_valid
+    end
+
+    it 'should not be valid when name is not present' do
+      recipe.name=nil
+      recipe.save
+      expect(recipe).not_to be_valid
+    end
+
     it 'Should have a name' do
       expect(recipe.name).to eq('Black Rice')
     end

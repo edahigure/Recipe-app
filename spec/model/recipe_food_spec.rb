@@ -1,10 +1,9 @@
-#rspec ./spec/model/recipe_food_spec.rb
+# rspec ./spec/model/recipe_food_spec.rb
 require 'rails_helper'
 
 RSpec.describe Food, type: :model do
-
   let!(:user) do
-    User.create(name: 'Jose', email: 'edahigure@hotmail.com',role: 'user',password: 'qweqwe')
+    User.create(name: 'Jose', email: 'edahigure@hotmail.com', role: 'user', password: 'qweqwe')
   end
 
   let!(:recipe) do
@@ -19,7 +18,7 @@ RSpec.describe Food, type: :model do
   end
 
   let!(:food) do
-    Food.create(name: 'milk',measurement_unit: 'Lt',price: 20.5, quantity: 10, user_id: user.id)
+    Food.create(name: 'milk', measurement_unit: 'Lt', price: 20.5, quantity: 10, user_id: user.id)
   end
 
   let!(:recipe_food) do
@@ -27,7 +26,6 @@ RSpec.describe Food, type: :model do
   end
 
   describe 'Check data values' do
-
     it 'Should be valid' do
       expect(recipe_food).to be_valid
     end
@@ -35,9 +33,7 @@ RSpec.describe Food, type: :model do
     it 'Should not be valid when quantity is negative' do
       recipe_food.quantity = -5.0
       recipe_food.save
-      expect(recipe_food).not_to  be_valid
+      expect(recipe_food).not_to be_valid
     end
-
-
   end
 end

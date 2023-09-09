@@ -17,8 +17,7 @@ class RecipesController < ApplicationController
   end
 
   # GET /recipes/1/edit
-  def edit
-   end
+  def edit; end
 
   # POST /recipes or /recipes.json
   def create
@@ -37,8 +36,7 @@ class RecipesController < ApplicationController
   end
 
   # PATCH/PUT /recipes/1 or /recipes/1.json
-  def update  
-    
+  def update
     respond_to do |format|
       if @recipe.update(recipe_params)
         format.html { redirect_to recipe_url(@recipe), notice: 'Recipe was successfully updated.' }
@@ -60,8 +58,6 @@ class RecipesController < ApplicationController
     end
   end
 
-  
-
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -73,7 +69,4 @@ class RecipesController < ApplicationController
   def recipe_params
     params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public, :user_id_id)
   end
-
-
-
 end

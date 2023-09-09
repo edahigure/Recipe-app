@@ -1,18 +1,16 @@
-#rspec ./spec/model/user_spec.rb
+# rspec ./spec/model/user_spec.rb
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  
   let!(:user) do
-    User.create(name: 'Jose', email: 'edahigure@hotmail.com',role: 'user',password: 'qweqwe')
+    User.create(name: 'Jose', email: 'edahigure@hotmail.com', role: 'user', password: 'qweqwe')
   end
 
   describe 'checking atributes and validity' do
-
     it 'should create a valid user' do
       expect(user).to be_valid
     end
-    
+
     it 'should give the correct name' do
       expect(user.name).to eq('Jose')
     end
@@ -36,8 +34,5 @@ RSpec.describe User, type: :model do
       expect(association.macro).to eq(:has_many)
       expect(association.options[:dependent]).to eq(:destroy)
     end
-  end 
-
-  
-
+  end
 end

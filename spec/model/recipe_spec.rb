@@ -1,10 +1,9 @@
-#rspec ./spec/model/recipe_spec.rb
+# rspec ./spec/model/recipe_spec.rb
 require 'rails_helper'
 
 RSpec.describe Recipe, type: :model do
-
   let!(:user) do
-    User.create(name: 'Jose', email: 'edahigure@hotmail.com',role: 'user',password: 'qweqwe')
+    User.create(name: 'Jose', email: 'edahigure@hotmail.com', role: 'user', password: 'qweqwe')
   end
 
   let!(:recipe) do
@@ -24,7 +23,7 @@ RSpec.describe Recipe, type: :model do
     end
 
     it 'should not be valid when name is not present' do
-      recipe.name=nil
+      recipe.name = nil
       recipe.save
       expect(recipe).not_to be_valid
     end
@@ -45,5 +44,4 @@ RSpec.describe Recipe, type: :model do
       expect(recipe.description).to eq('Recipe Description')
     end
   end
-
 end

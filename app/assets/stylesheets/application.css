@@ -13,3 +13,50 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  font-family: 'Pangolin', cursive !important;
+}
+
+.container-column {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* .container {
+  display: flex;
+  flex: 1;
+  gap: 12px;
+} */
+
+.container-solid {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+  gap: 12px;
+  border: solid black 1px;
+}
+
+.separator {
+  border: solid black 1px;
+  margin-top: 1vh;
+  margin-bottom: 5vh;
+}
+
+.description {
+  min-height: 10vh;
+}
+
+#recipes {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+}
+
+.no-text-decoration {
+  text-decoration: none;
+  color: black;
+}

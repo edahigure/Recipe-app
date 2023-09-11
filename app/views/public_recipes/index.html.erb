@@ -1,0 +1,40 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Public Recipes</h1>
+
+<div id="recipes">
+  <% @public_recipes.each do |recipe| %>
+
+    <% if recipe.public? %>
+
+    <div class="container-solid">
+      
+      <div class="container-column"> 
+        <p>
+          <strong>Recipe:</strong>
+          <%= recipe.name %>
+        </p>
+        <div class="container">
+
+          <p>
+            by <%= recipe.user.name %>
+          </p>
+          <div><%= link_to 'Details', recipe_path(recipe.id) %>  </div>
+        </div>  
+      </div> 
+      <div class = "container-column">
+        <p>
+        <strong>Total food items:</strong>
+          <%= recipe.recipe_foods.length %>
+          <!--%= RecipeFood.where(recipe_id: recipe.id).count %-->
+        </p>     
+        <p>Total price: $ <%= recipe.total_price %></p>
+
+      </div>
+
+    </div>
+    
+    <% end %>
+
+  <% end %>
+</div>

@@ -1,0 +1,17 @@
+<tr id="<%= dom_id food %>">
+  <td>
+    <%= food.name %>
+  </td>
+  <td>
+    <%= food.measurement_unit %>
+  </td>
+  <td>
+    <%= food.price %>
+  </td>
+  <td>
+    <%= food.quantity %>
+  </td>
+  <td>
+    <%= link_to 'Delete', food, 'data-turbo-method': :delete %>
+  </td>
+</tr>

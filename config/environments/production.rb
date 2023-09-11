@@ -3,6 +3,7 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.action_mailer.default_url_options = { host: 'recipe-app-3.onrender.com' }
   # Code is not reloaded between requests.
   config.cache_classes = true
 
